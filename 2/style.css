@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  color: white;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: #111;
+  overflow-x: hidden;
+}
+
+.page1,
+.page2,
+.page3 {
+  height: 100%;
+  width: 100%;
+}
+
+.page2 {
+  background-color: royalblue;
+  padding: 6vw 0;
+}
+.page2 h1 {
+  font-size: 62vh;
+  font-weight: 500;
+  text-transform: uppercase;
+}

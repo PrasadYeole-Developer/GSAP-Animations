@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  color: white;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: #111;
+}
+
+.view1 {
+  height: 100vh;
+  width: 100vw;
+}
+.view1 .box {
+  height: 120px;
+  width: 120px;
+  background-color: darkblue;
+}
+.view1 .box2 {
+  height: 120px;
+  width: 120px;
+  background-color: darkslategray;
+}
+
+.view2 {
+  height: 100vh;
+  width: 100vw;
+}
+.view2 .box {
+  height: 300px;
+  width: 300px;
+  background-color: royalblue;
+}
+
+.view3 {
+  height: 100vh;
+  width: 100vw;
+}
+.view3 .box1 {
+  height: 200px;
+  width: 200px;
+  background-color: navy;
+}
+.view3 .box2 {
+  height: 200px;
+  width: 200px;
+  background-color: royalblue;
+}
+.view3 .box3 {
+  height: 200px;
+  width: 200px;
+  background-color: rosybrown;
+}
+
+.view4 {
+  height: 100vh;
+  width: 100vw;
+}
+.view4 .box1 {
+  height: 200px;
+  width: 200px;
+  background-color: navy;
+}
+.view4 .box2 {
+  height: 200px;
+  width: 200px;
+  background-color: royalblue;
+}
+.view4 .box3 {
+  height: 200px;
+  width: 200px;
+  background-color: rosybrown;
+}
+
+.home {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+.home nav {
+  padding: 2rem 3rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.home nav .links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+}
+.home nav .links a {
+  text-decoration: none;
+}
+.home h1 {
+  font-size: 6rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
