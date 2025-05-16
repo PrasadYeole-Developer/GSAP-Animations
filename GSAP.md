@@ -522,3 +522,118 @@ This is how you have made a simple curve with svg
 
 As per your convenience you can change these values can change the stroke and fill attributes as well
 
+Creating Animation with this curve:
+
+To change the values of attribute using GSAP you can write code like this:
+
+```js
+gsap.to("svg path", {
+  attr: { d: path },
+});
+```
+
+`index.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SVG</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="string">
+      <svg width="1000" height="200">
+        <path
+          d="M 10 100 Q 500 100 990 100"
+          stroke="white"
+          fill="transparent"
+        />
+      </svg>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
+      integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="script.js"></script>
+  </body>
+</html>
+```
+
+`style.scss`
+
+```scss
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  color: white;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+body {
+  background-color: #111;
+}
+.string {
+  height: 8rem;
+  width: 100%;
+}
+```
+
+`script.js`
+
+```js
+let path = "M 10 100 Q 500 100 990 100";
+let finalPath = "M 10 100 Q 500 100 990 100";
+
+let string = document.querySelector(".string");
+
+string.addEventListener("mousemove", (dets) => {
+  path = `M 10 100 Q 500 ${dets.y} 990 100`;
+
+  gsap.to("svg path", {
+    attr: { d: path },
+  });
+});
+```
+
+Introducing GSAP Easing properties:
+[GSAP Easing](https://gsap.com/docs/v3/Eases)
+
+Including in project:
+
+```js
+let path = "M 10 100 Q 500 100 990 100";
+let finalPath = "M 10 100 Q 500 100 990 100";
+
+let string = document.querySelector(".string");
+
+string.addEventListener("mousemove", (dets) => {
+  path = `M 10 100 Q ${dets.x} ${dets.y} 990 100`;
+  gsap.to("svg path", {
+    attr: { d: path },
+    duration: 0.3,
+    ease: "power3.out",
+  });
+});
+
+string.addEventListener("mouseleave", () => {
+  gsap.to("svg path", {
+    attr: { d: finalPath },
+    duration: 1.5,
+    ease: "elastic.out(1,0.2)",
+  });
+});
+```
+
+For more properties like `ease: "power3.out"` & `ease: "elastic.out(1,0.2)"` can check GSAP Easing Docs
+
