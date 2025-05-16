@@ -11,3 +11,11 @@ body {
   height: 100%;
   width: 100%;
 }
+
+.string {
+  height: 8rem;
+  width: 100%;
+}
+.string svg {
+  background-color: red;
+}

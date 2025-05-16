@@ -470,9 +470,55 @@ gsap.to(".page2 h1", {
     trigger: ".page2",
     scroller: "body",
     start: "top 0%",
-    end: "top -100%", // This property refering to the endpoint of the animation like how long will the animation execute basically, animation will end when the .page2 hit this given position to the end 
+    end: "top -100%", // This property refering to the endpoint of the animation like how long will the animation execute basically, animation will end when the .page2 hit this given position to the end
     scrub: 1,
     pin: true,
   },
 });
 ```
+
+- SVG
+
+SVG stands for Scalable Vector Graphics
+
+The problem with images was when we try to zoom into it because of the pixels it won't look nice
+
+- - Working with SVG
+
+SVG is a container element which has various attribute in it like height, width, etc.
+
+[MDN Document](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorials/SVG_from_scratch/Paths)
+
+`index.html`
+
+```html
+<div class="string">
+  <svg width="190" height="160">
+    <path d="M 10 80 Q 95 10 180 80" stroke="black" fill="transparent" />
+  </svg>
+</div>
+```
+
+So this svg is of a simple curve display
+As you can see svg tag containing a self-closing tag:
+
+```html
+<path d="M 10 80 Q 95 10 180 80" stroke="black" fill="transparent" />
+```
+
+Inside the path the 'M' is denoting move to point `M 10 80` first value is of x-axis and second one is of y-axis
+Basically it is our starting point of curve 10 from x-axis and 80 from y-axis
+Then comes the middle part which is curve so there are two types of curve one is Qudratic curve and second one is Cubic curve
+Cubic curve is called with C
+& Qudratic curve is called with Q.
+
+The cubic curve is slightly complex curve which covers various type of curves
+
+For a simple curve like in our code we can use Qudratic curve like this:
+`Q 95 10`
+
+And the ending point is 180 at x-axis and 80 from y-axis
+This is how you have made a simple curve with svg
+
+As per your convenience you can change these values can change the stroke and fill attributes as well
+
