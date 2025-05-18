@@ -638,4 +638,4 @@ string.addEventListener("mouseleave", () => {
 });
 ```
 
-For more properties like `ease: "power3.out"` & `ease: "elastic.out(1,0.2)"` can check GSAP Easing Docs
+For more properties like `ease: "power3.out"` & `ease: "elastic.out(1,0.2)"` can check GSAP Easing Docs 
