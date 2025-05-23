@@ -101,7 +101,7 @@ In stagger can use negative values too will start animating from last element to
 
 - Repeat and Yoyo
 
-After the initial animation if the repeat property is given and the animation will repeat again given number of times
+After the initial animation if the repeat property is given then the animation will repeat again given number of times
 
 While repeating animation when element will try to reach previous position it won't look animated then comes Yoyo, What yoyo will do is it creates reverse animation at the time of element getting back to the position where it was started to show the animation again
 
