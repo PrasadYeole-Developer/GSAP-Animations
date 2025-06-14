@@ -713,5 +713,65 @@ gsap.from("h1 .b", {
   stagger: -0.15,
   opacity: 0,
 });
-
 ```
+
+- Making Animated Website
+  Sourcode is in folder 8
+
+Sometimes in timeline if you give delay it won't work as expected so we give delay like this:
+
+```js
+tl.from(
+  ".center .right img",
+  {
+    duration: 0.5,
+    opacity: 0,
+  },
+  "-=1"
+);
+```
+
+If you are working with timeline and you wanted two divs animate at exact same time, then you can pass a same name to those both exactly like this:
+
+```js
+tl2.from(
+  ".elem.line1-l",
+  {
+    x: -300,
+    opacity: 0,
+    duration: 0.5,
+  },
+  "left"
+);
+tl2.from(
+  ".elem.line1-r",
+  {
+    x: 300,
+    opacity: 0,
+    duration: 0.5,
+  },
+  "left"
+);
+tl2.from(
+  ".elem.line2-l",
+  {
+    x: -300,
+    opacity: 0,
+    duration: 0.5,
+  },
+  "right"
+);
+tl2.from(
+  ".elem.line2-r",
+  {
+    x: 300,
+    opacity: 0,
+    duration: 0.5,
+  },
+  "right"
+);
+```
+
+`Live Demo` of Animated Website: [Site](https://gsap-animated-site.vercel.app/)
+
+- GSAP with React

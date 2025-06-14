@@ -1,0 +1,173 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: monospace;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+section {
+  padding: 3.5rem 7rem;
+}
+section nav {
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: space-between;
+}
+section nav .navLeft {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 3rem;
+}
+section nav .navLeft i {
+  display: inline-block;
+  rotate: 45deg;
+}
+section nav .navRight {
+  display: flex;
+  align-items: center;
+  gap: 3.6rem;
+  font-size: 1.2rem;
+}
+section nav .navRight button {
+  font-size: 1rem;
+  padding: 1.2rem 2rem;
+  background-color: white;
+  border-radius: 0.8rem;
+}
+section .center {
+  position: relative;
+  margin-top: 3.5rem;
+  display: flex;
+  width: 100%;
+  height: 80%;
+  padding: 2rem 0;
+}
+section .center .left {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+section .center .left h1 {
+  font-size: 4rem;
+  line-height: 1.3;
+}
+section .center .left p {
+  color: #111;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  font-family: Courier, monospace;
+}
+section .center .left button {
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 1.5rem;
+  padding: 1.5rem 2.5rem;
+  background-color: white;
+  border-radius: 0.8rem;
+  background-color: black;
+  color: white;
+}
+section .center .right {
+  width: 50%;
+}
+section .center .right img {
+  height: 100%;
+  width: 40%;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+section .marque {
+  margin-top: 9rem;
+  overflow: hidden;
+  display: flex;
+  gap: 5rem;
+}
+section .marque img {
+  width: 100%;
+  height: 3rem;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+section .sectionTwo {
+  width: 100%;
+  margin-top: 7rem;
+  margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+section .sectionTwo .top {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+section .sectionTwo .top h1 {
+  font-weight: 300;
+  padding: 0.3rem 0.3rem;
+  font-size: 2.5rem;
+  border-radius: 0.3rem;
+  background-color: #abe47f;
+}
+section .sectionTwo .services {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+section .sectionTwo .services .elem {
+  width: calc(50% - 1rem);
+  flex-shrink: 0;
+  display: flex;
+  border: #111 solid;
+  box-shadow: 0 0.5rem 0 black;
+  border-radius: 1.8rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.2rem;
+}
+section .sectionTwo .services .elem .left {
+  margin-left: 1rem;
+  width: 100%;
+  display: flex;
+  gap: 6rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+section .sectionTwo .services .elem .left h1 {
+  font-weight: 300;
+  padding: 0.3rem 0.3rem;
+  font-size: 1.8rem;
+  border-radius: 0.3rem;
+  background-color: #abe47f;
+}
+section .sectionTwo .services .elem .left .bottom {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+section .sectionTwo .services .elem .left .bottom h3 {
+  font-weight: 300;
+}
+section .sectionTwo .services .elem .left i {
+  color: white;
+  background-color: black;
+  padding: 0.9rem;
+  border-radius: 50%;
+}
+section .sectionTwo .services .elem img {
+  width: 45%;
+}
