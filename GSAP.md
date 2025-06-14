@@ -774,4 +774,496 @@ tl2.from(
 
 `Live Demo` of Animated Website: [Site](https://gsap-animated-site.vercel.app/)
 
-- GSAP with React
+- GSAP with ReactJS
+
+[Docs](https://gsap.com/resources/React)
+
+`App.jsx`
+
+```jsx
+import React, { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+const App = () => {
+  const gsapRef = useRef();
+  useGSAP(() => {
+    gsap.to(gsapRef.current, {
+      x: 700,
+      duration: 0.8,
+      delay: 1,
+      rotate: 720,
+    });
+  });
+  return (
+    <main>
+      <div ref={gsapRef} className="box"></div>
+    </main>
+  );
+};
+
+export default App;
+```
+
+Using useRef() Hook for specificity exactly like this:
+`App.jsx`
+
+```jsx
+import React, { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+const App = () => {
+  const boxRef = useRef();
+  useGSAP(() => {
+    gsap.from(boxRef.current, {
+      y: 300,
+      opacity: 0,
+      duration: 0.8,
+      delay: 1,
+      rotate: 360,
+    });
+  });
+  return (
+    <main>
+      <div className="container">
+        <div className="circle"></div>
+        <div ref={boxRef} className="box"></div>
+      </div>
+      <div className="kuch">
+        <div className="circle"></div>
+        <div className="box"></div>
+      </div>
+    </main>
+  );
+};
+
+export default App;
+```
+
+Also we can use scope(by providing class/id of and element which will result in running the gsap code only for the targeted element inside element specified in scope) for specificity exactly like this:
+
+`App.jsx`
+
+```jsx
+import React from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+const App = () => {
+  useGSAP(
+    () => {
+      gsap.from(".box", {
+        y: 300,
+        opacity: 0,
+        duration: 0.8,
+        delay: 1,
+        rotate: 360,
+      });
+    },
+    { scope: ".container" }
+  );
+  return (
+    <main>
+      <div className="container">
+        <div className="circle"></div>
+        <div className="box"></div>
+      </div>
+      <div className="kuch">
+        <div className="circle"></div>
+        <div className="box"></div>
+      </div>
+    </main>
+  );
+};
+
+export default App;
+```
+
+`App.jsx`
+
+```jsx
+import React, { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+const App = () => {
+  const container = useRef();
+  useGSAP(
+    () => {
+      gsap.from(".box", {
+        y: 300,
+        opacity: 0,
+        duration: 0.8,
+        delay: 1,
+        rotate: 360,
+      });
+    },
+    { scope: container }
+  );
+  return (
+    <main>
+      <div ref={container} className="container">
+        <div className="circle"></div>
+        <div className="box"></div>
+      </div>
+      <div className="kuch">
+        <div className="circle"></div>
+        <div className="box"></div>
+      </div>
+    </main>
+  );
+};
+
+export default App;
+```
+
+`index.scss`
+
+```scss
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  color: white;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  padding: 1.2rem;
+  height: 100vh;
+  width: 100%;
+  background-color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  .kuch {
+    overflow: hidden;
+  }
+  .container {
+    padding: 2rem;
+    border: 0.2rem solid white;
+    border-radius: 1.2rem;
+    overflow: hidden;
+  }
+  .box {
+    height: 10rem;
+    width: 10rem;
+    border-radius: 2rem;
+    margin: 1.2rem;
+    background: linear-gradient(to right bottom, rgb(193, 58, 85), crimson);
+  }
+  .circle {
+    height: 10rem;
+    width: 10rem;
+    margin: 1.2rem;
+    border-radius: 50%;
+    background: linear-gradient(to right bottom, lightblue, cadetblue);
+  }
+}
+```
+
+Dynamic:
+`App.jsx`
+
+```jsx
+import React, { useState } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+const App = () => {
+  const [circle, setCircle] = useState(0);
+  const random = gsap.utils.random(-500, 500); // Random value between -500 and 500 will be generated divided by 100
+
+  useGSAP(() => {
+    gsap.to(".circle", {
+      x: circle,
+      duration: 0.5,
+    });
+  }, [circle]);
+  return (
+    <main>
+      <button onClick={() => setCircle(random)}>Animate</button>
+      <div className="circle"></div>
+    </main>
+  );
+};
+
+export default App;
+```
+
+`index.scss`
+
+```scss
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  color: white;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  padding: 1.2rem;
+  height: 100vh;
+  width: 100%;
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  .circle {
+    height: 10rem;
+    width: 10rem;
+    margin: 1.2rem;
+    border-radius: 50%;
+    background: linear-gradient(to right bottom, lightblue, cadetblue);
+  }
+  button {
+    padding: 1.2rem 6rem;
+    border-radius: 5rem;
+    background: linear-gradient(lightseagreen, seagreen);
+    border: none;
+    color: #111;
+    font-size: 2rem;
+  }
+  :active {
+    scale: 0.99;
+  }
+}
+```
+
+Something More:
+`App.jsx`
+
+```jsx
+import React, { useRef, useState } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+const App = () => {
+  const boxRef = useRef();
+  const randomVal = gsap.utils.random(-500, 500, 100);
+  const rotateVal = gsap.utils.random(-360, 360, 30);
+
+  const [val, setVal] = useState(0);
+  const [rot, setRot] = useState(0);
+
+  useGSAP(() => {
+    gsap.to(boxRef.current, {
+      x: val,
+      duration: 0.5,
+      rotate: rot,
+    });
+  }, [val, rot]);
+
+  return (
+    <main>
+      <button
+        onClick={() => {
+          setVal(randomVal);
+          setRot(rotateVal);
+        }}
+      >
+        Animate
+      </button>
+      <div ref={boxRef} className="box"></div>
+    </main>
+  );
+};
+
+export default App;
+```
+
+More Addition to it:
+`App.jsx`
+
+```jsx
+import React, { useRef, useState } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+const App = () => {
+  const imageRef = useRef();
+  const xVal = gsap.utils.random(-500, 500, 100);
+  const yVal = gsap.utils.random(-300, 300, 100);
+  const rotateVal = gsap.utils.random(-360, 360, 30);
+
+  const [xval, setXVal] = useState(0);
+  const [yval, setYVal] = useState(0);
+  const [rot, setRot] = useState(0);
+
+  useGSAP(() => {
+    gsap.to(imageRef.current, {
+      x: xval,
+      y: yval,
+      duration: 0.5,
+      rotate: rot,
+    });
+  }, [xval, yval, rot]);
+
+  return (
+    <main>
+      <img
+        onClick={() => {
+          setXVal(xVal);
+          setYVal(yVal);
+          setRot(rotateVal);
+        }}
+        src="https://www.pinclipart.com/picdir/big/9-91142_fly-clip-art-flies-clipart-png-download.png"
+        ref={imageRef}
+        className="box"
+      ></img>
+    </main>
+  );
+};
+
+export default App;
+```
+
+`index.scss`
+
+```scss
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  color: white;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  padding: 1.2rem;
+  height: 100vh;
+  width: 100%;
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  img {
+    height: 6rem;
+    width: 6rem;
+  }
+  button {
+    padding: 1.2rem 6rem;
+    border-radius: 5rem;
+    background: linear-gradient(lightseagreen, seagreen);
+    border: none;
+    color: #111;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  :active {
+    scale: 0.99;
+  }
+}
+```
+
+Note that the dependency array we provided like:
+
+```jsx
+useGSAP(() => {
+  gsap.to(imageRef.current, {
+    x: xval,
+    y: yval,
+    duration: 0.5,
+    rotate: rot,
+  });
+}, [xval, yval, rot]);
+```
+
+Can also be written as:
+
+```jsx
+useGSAP(
+  () => {
+    gsap.to(imageRef.current, {
+      x: xval,
+      y: yval,
+      duration: 0.5,
+      rotate: rot,
+    });
+  },
+  { scope: "main", dependencies: [xVal, yVal, rot] }
+);
+```
+
+By also defining it's scope
+
+- Context Safe
+
+`App.jsx`
+
+```jsx
+import React, { useRef } from "react";
+import gsap from "gsap";
+const App = () => {
+  const boxRef = useRef();
+  const rotateBox = () => {
+    gsap.to(boxRef.current, {
+      rotate: "+=360",
+      duration: 1,
+    });
+  };
+
+  return (
+    <main>
+      <button onClick={rotateBox}>Animate</button>
+      <div ref={boxRef} className="box"></div>
+    </main>
+  );
+};
+
+export default App;
+```
+
+Look at this code we didn't use useGSAP hook in this one, if we write our code like this then even after animation it will stay there and consume memory, What useGSAP doing was overcoming this problem so it won't consume memory after the animation is done
+
+Usage of contextSafe:
+If we still write our code like this we can overcome from this problem by using contextSafe exactly like this:
+
+`App.jsx`
+
+```jsx
+import React, { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+const App = () => {
+  const boxRef = useRef();
+  const { contextSafe } = useGSAP();
+  const rotateBox = contextSafe(() => {
+    gsap.to(boxRef.current, {
+      rotate: "+=360",
+      duration: 1,
+    });
+  });
+
+  return (
+    <main>
+      <button onClick={rotateBox}>Animate</button>
+      <div ref={boxRef} className="box"></div>
+    </main>
+  );
+};
+
+export default App;
+```
